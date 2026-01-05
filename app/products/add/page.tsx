@@ -12,15 +12,26 @@ export default function AddProductPage() {
   const [imageUrl, setImageUrl] = useState(""); 
   const router = useRouter();
 
+  // FIX 1: Add explicit defaultValues so TypeScript knows 'image' exists from the start
   const { register, handleSubmit, trigger, setValue, watch, formState: { errors } } = useForm<ProductFormData>({
     resolver: zodResolver(productSchema) as any,
     mode: "onChange",
+    defaultValues: {
+      name: "",
+      description: "",
+      price: 0,
+      stock: 0,
+      category: "",
+      image: "", // Important: must match the schema
+    }
   });
 
+  // FIX 2: TypeScript now recognizes "image" because it's in ProductFormData and defaultValues
   const currentImage = watch("image");
 
   const nextStep = async () => {
-    const isValid = await trigger(["name", "description"]);
+    // We cast this to any for the trigger to avoid deep-nested type errors during build
+    const isValid = await trigger(["name", "description"] as any);
     if (isValid) setStep(2);
   };
 
@@ -49,7 +60,6 @@ export default function AddProductPage() {
           <div className="space-y-5">
             <h2 className="text-xl font-semibold text-gray-800">Step 1: Product Details</h2>
             
-            {/* IMAGE UPLOAD SECTION START */}
             <div className="border-2 border-dashed border-gray-200 p-4 rounded-xl text-center bg-gray-50">
               <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Product Image</label>
               <CldUploadWidget 
@@ -76,7 +86,6 @@ export default function AddProductPage() {
                 </div>
               )}
             </div>
-            {/* IMAGE UPLOAD SECTION END */}
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Product Name</label>
