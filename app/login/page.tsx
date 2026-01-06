@@ -1,7 +1,6 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-// We don't need useRouter if we use window.location
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -20,6 +19,7 @@ export default function LoginPage() {
       // This forces the browser to refresh and pick up the new session immediately
       window.location.href = "/dashboard"; 
     } else {
+      // SECURITY FIX: Removed credentials from the alert message
       alert("Invalid credentials. Please try again.");
     }
   };
