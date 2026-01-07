@@ -7,7 +7,7 @@ const ProductSchema = new Schema({
   category: { type: String, required: true },image: { type: String },
   stock: { type: Number, required: true },
 }, { 
-  timestamps: true // This automatically adds 'createdAt' and 'updatedAt'
+  timestamps: true 
 });
 
 // If the model already exists, use it; otherwise, create a new one

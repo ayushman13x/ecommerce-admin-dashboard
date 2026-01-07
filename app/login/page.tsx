@@ -15,11 +15,10 @@ export default function LoginPage() {
     });
 
     if (result?.ok) {
-      // FIX: Use window.location.href instead of router.push
-      // This forces the browser to refresh and pick up the new session immediately
+      
       window.location.href = "/dashboard"; 
     } else {
-      // SECURITY FIX: Removed credentials from the alert message
+      
       alert("Invalid credentials. Please try again.");
     }
   };

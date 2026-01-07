@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { LayoutDashboard, Package, BarChart3, Users, LogOut, UserCircle } from 'lucide-react';
 
 export default function Sidebar() {
-  const { data: session } = useSession(); // This gets the user data (admin@test.com)
+  const { data: session } = useSession(); 
 
   return (
     <div className="w-64 bg-slate-900 text-white min-h-screen p-4 flex flex-col border-r border-slate-800">

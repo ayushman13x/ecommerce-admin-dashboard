@@ -12,7 +12,7 @@ export default function AddProductPage() {
   const [imageUrl, setImageUrl] = useState(""); 
   const router = useRouter();
 
-  // FIX 1: Add explicit defaultValues so TypeScript knows 'image' exists from the start
+  
   const { register, handleSubmit, trigger, setValue, watch, formState: { errors } } = useForm<ProductFormData>({
     resolver: zodResolver(productSchema) as any,
     mode: "onChange",
@@ -22,11 +22,11 @@ export default function AddProductPage() {
       price: 0,
       stock: 0,
       category: "",
-      image: "", // Important: must match the schema
+      image: "", 
     }
   });
 
-  // FIX 2: TypeScript now recognizes "image" because it's in ProductFormData and defaultValues
+  
   const currentImage = watch("image");
 
   const nextStep = async () => {

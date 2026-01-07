@@ -6,7 +6,6 @@ export const productSchema = z.object({
   price: z.coerce.number().min(1, "Price must be greater than 0"),
   stock: z.coerce.number().min(0, "Stock cannot be negative"),
   category: z.string().min(1, "Please select a category"),
-  image: z.string().optional(), // <--- ADD THIS LINE
 });
 
 export type ProductFormData = z.infer<typeof productSchema>;

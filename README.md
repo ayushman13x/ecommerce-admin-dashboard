@@ -35,6 +35,7 @@ Deployment           Vercel
 Repository Structure
 
 ecommerce-admin-dashboard/
+
 │
 ├── app/                  
 │   ├── api/              
@@ -93,7 +94,7 @@ The dashboard transforms raw MongoDB data into actionable insights.
 >Real-time Updates: Data is fetched server-side to ensure the dashboard reflects the most current state of the database.
 
  Key Findings & Takeaways
- 
+
 Middleware Utility: Centralizing authentication in middleware.ts significantly simplifies route management compared to page-by-page checks.
 
 Deployment Synchronization: Production environments (Vercel) require careful alignment of NEXTAUTH_URL and MongoDB Network Access (0.0.0.0/0) to ensure 24/7 availability.
